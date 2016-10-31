@@ -1,0 +1,64 @@
+  <ion-modal-view>
+      <ion-header-bar>
+         <h1 class = "title">Edit Setting</h1>
+         <button class = "button icon icon-right ion-ios-close-outline" 
+            ng-click = "closeCheckModal()"></button>
+      </ion-header-bar>
+      <ion-content>
+  <div class="formcontainer">
+    <form ng-submit="settingSort()" >
+    <div class="item item-divider" ng-repeat-start="item in settingGroups">
+         <div style="display:inline-block;width:33%"> {{item._id}}</div>
+    </div>
+      <div class="item" ng-repeat-end ng-repeat="item in item.settings" ng-switch="item.inputType">
+           
+           <div ng-switch-when="INPUT" style="display:inline-block;width:33%">{{item.name}} <input ng-model="item.value"/></div>
+
+         
+
+           <div  ng-switch-when="CHECKBOX" style="display:inline-block;width:33%" >
+           
+           {{item.name}} <input type="checkbox"    ng-true-value="'{{item.name}}'"  ng-model="item.value" />
+           </div>
+            
+             <div  ng-switch-when="CHECKBOXJSON" style="display:inline-block;width:33%" >
+           
+                     {{item.name}}
+           </div>
+
+            <div  ng-switch-when="RADIO" > 
+              {{item.name}}<input  value="'{{item.name}}'"  ng-model="item.value"  name="{{item.group}}" type="radio"  />
+
+
+              
+             
+              
+             </div>
+
+             <div  ng-switch-when="RADIOJSON" style="display:inline-block;width:33%" > 
+      
+                    
+                    {{item.name}}
+                    <select  class="clo32" ng-model="item.value">
+       
+                      <option value="{{sec}}" ng-repeat="sec in item.info">{{sec}}</option>
+            </select>
+      
+            </div>
+
+
+     
+                 
+      
+
+       
+
+     </div>
+
+
+  </div>     <div class="submit">
+      <input type="submit" value="Save" id="form_button" />
+    </div>
+           </form>
+
+     </ion-content></ion-modal-view>

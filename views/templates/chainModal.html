@@ -1,0 +1,28 @@
+  <ion-modal-view>
+      <ion-header-bar>
+         <h1 class = "title">Chain Store</h1>
+         <button class = "button icon icon-right ion-ios-close-outline" 
+            ng-click = "closeChainModal()"></button>
+      </ion-header-bar>
+      <ion-content>
+
+  <div class="formcontainer">
+   <form ng-submit="chainStoreUpdate()" >
+    Name:<input  ng-model="chainStore.name" />
+    merchantIds:<input ng-model="chainStore.merchantIds" />
+
+     
+                 
+      
+
+       
+
+     </div>
+
+
+  </div>     <div class="submit">
+      <input type="submit" value="Save" id="form_button" />
+    </div>
+           </form>
+
+     </ion-content></ion-modal-view>

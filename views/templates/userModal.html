@@ -1,0 +1,46 @@
+ <ion-modal-view>
+      <ion-header-bar>
+         <h1 class = "title">Edit Admin</h1>
+         <button class = "button icon icon-right ion-ios-close-outline" 
+            ng-click = "closeUserModal()"></button>
+      </ion-header-bar>
+      <ion-content>
+ <form  ng-submit="userUpdate()">
+     <div class = "row item"  style="text-align:center;"><div class = "col col-50"><ion-checkbox ng-model="userData.status"   ng-true-value="true" ng-false-value="false" >Status</ion-checkbox> </div>
+     
+    </div>
+ 
+    
+   <div class = "row item"  style="text-align:center;">
+   <div class = "col col-50"><input   placeholder="storeName"  ng-model="userData.storeName"  style="width:90%" required/><span style="color:red">*</span></div>
+   <div class = "col col-50"><input   placeholder="merchantIds" ng-model="userData.merchantIds"  style="width:90%"  required/><span style="color:red">*</span></div>
+   </div>
+
+
+   <div class = "row item"  style="text-align:center;">
+   <div class = "col col-50"><input   placeholder="username"  ng-model="userData.userName"  style="width:90%" required/><span style="color:red">*</span></div>
+   <div class = "col col-50"><input   placeholder="password" ng-model="userData.password"  style="width:90%"  required/><span style="color:red">*</span></div>
+   </div>
+
+
+   <div class = "row item"  style="text-align:center;">
+   <div class = "col col-50"><input   placeholder="firstName" ng-model="userData.firstName"   style="width:90%"/></div>
+   <div class = "col col-50"><input   placeholder="lastName" ng-model="userData.lastName"  style="width:90%"/></div>
+   </div>
+      <div class = "row item"  style="text-align:center;">
+   <div class = "col col-50"><input   placeholder="phone_num1" ng-model="userData.phoneNum1"  style="width:90%" /></div>
+   <div class = "col col-50"><input   placeholder="email"  ng-model="userData.email"  style="width:90%" /></div>
+   </div>
+    <div class = "row item">
+   <div class = "col col-center" style="text-align:center;">
+    <input   placeholder="description" ng-model="userData.description"  style="width:95%;margin:auto;"/>
+      </div>
+  </div>  
+<div style="width:100%;text-align:center;margin-top:20px;font-size:600;font-size:30px;">
+      
+      
+ <input type="submit" value="Submit" class="button button-large button-positive" />
+
+    </div>
+</form>
+     </ion-content></ion-modal-view>

@@ -1,0 +1,30 @@
+<ion-modal-view>
+      <ion-header-bar>
+         <h1 class = "title">Edit Setting</h1>
+         <button class = "button icon icon-right ion-ios-close-outline" 
+            ng-click = "closeSeq()"></button>
+      </ion-header-bar>
+      <ion-content>
+  <div class="formcontainer">
+         
+  <form ng-submit="seqUpdate()" >
+    <div style="display:flex; justify-content: space-between;flex-flow:row wrap">
+     
+      <input  placeholder="merchantId" type="text" ng-model="appData.seq.merchantId"   class="clo32 required" required />
+      <input  placeholder="name" type="text" ng-model="appData.seq.name"   class="clo32 required" required/>
+      <input  placeholder="current seq" type="text" ng-model="appData.seq.seq"   class="clo32 required" required/>
+
+      <input  placeholder="Start" type="text" ng-model="appData.seq.seqStart"   class="clo32" />
+      <input  placeholder="End" type="text" ng-model="appData.seq.seqEnd"   class="clo32" />
+      <input  placeholder="Pre" type="text" ng-model="appData.seq.pre"   class="clo32" />
+      <input  placeholder="len" type="text" ng-model="appData.seq.len"   class="clo32" />
+      <input   type="checkbox" ng-model="appData.seq.daySign"  />
+      </div>
+     <div class="submit">
+      <input type="submit" value="Save" id="form_button" /> 
+      <input type="button" value="Test"  ng-click="seqTest()" id="form_button" /> 
+    </div>
+  </form>
+</div>
+
+     </ion-content></ion-modal-view>

@@ -1,0 +1,36 @@
+<ion-modal-view>
+      <ion-header-bar>
+         <h1 class = "title">Edit Setting</h1>
+         <button class = "button icon icon-right ion-ios-close-outline" 
+            ng-click = "closeSettingModal()"></button>
+      </ion-header-bar>
+      <ion-content>
+  <div class="formcontainer">
+         
+  <form ng-submit="settingUpdate()" >
+    <div style="display:flex; justify-content: space-between;flex-flow:row wrap">
+     
+      <input  placeholder="Group" type="text" ng-model="setting.group"   class="clo32 required" required />
+      <input  placeholder="second language" type="text" ng-model="setting.language.group.second"   class="clo32" />
+      <input  placeholder="third language" type="text" ng-model="setting.language.group.third"   class="clo32" />
+
+      <input  placeholder="Name" type="text" ng-model="setting.name"   class="clo32 required" />
+      <input  placeholder="second language" type="text" ng-model="setting.language.name.second"   class="clo32" />
+      <input  placeholder="third language" type="text" ng-model="setting.language.name.third"   class="clo32" />
+      
+      <input  placeholder="Order" type="number" ng-model="setting.order"   class="clo32 required" step="0.001" />
+      <select  ng-model="setting.inputType" style="width:48%;border-bottom:solid red 2px;"  >
+        
+        <option value="{{item.id}}" ng-repeat="item in settingInputType">{{item.id}}</option>
+     </select>
+        <input  placeholder="JSON" type="text" ng-model="setting.info"  class="required" ng-if="setting.inputType=='CHECKBOXJSON' || setting.inputType=='RADIOJSON'" required/>
+
+
+    </div>
+     <div class="submit">
+      <input type="submit" value="Save" id="form_button" />  <input type="button" value="sort"  ng-click="settingSort()"/>
+    </div>
+  </form>
+</div>
+
+     </ion-content></ion-modal-view>

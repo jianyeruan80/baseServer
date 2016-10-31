@@ -1,0 +1,78 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+   
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="(min-width:500px)"> 
+    <ion-header-bar class="bar-stable" style="display:block;text-align:center;font-size:18px;line-height:35px;font-weight:500">
+    <!-- <h3 class="title">user Manager</h3> -->
+      
+        Admin Manager
+        <span style="float:right" ng-click="openUserModal()">New&nbsp;</span>
+
+    
+  </ion-header-bar>
+   <div class="bar bar-subheader">
+  <ion-pane>
+                <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="Search">
+               </label>
+     </ion-pane> 
+        </div> 
+    <ion-content style="margin-top:45px;">
+    
+
+    <div class = "row item item-divider" style="height:45px;">
+   
+   <div class = "col-50 col-center">Admin</div>
+   <div class = "col-50 col-center">MerchantIds</div>
+  
+  </div>
+
+  <div class = "row item" ng-repeat="item in returnData.adminList" style="height:45px;position:relative">
+   <div class = "col-center" ng-click="getUser($index)" style="width:40%;overflow:hidden;">{{item.userName}}</div>
+   <div class = "col-center"  title="{{item.merchantIds}}" style="width:60%;overflow:hidden">&nbsp;&nbsp;{{item.merchantIds}}
+   
+    <label class="admin--label" style="position:absolute;right:-8px;top:-10px" ng-click="getUserPerm()">
+        <input class="admin--radio" type="radio" name="admin-radio" ng-model="config.isChedkedAdmin" value="{{item._id}}">
+        <span class="admin--radioInput"></span>
+    </label>
+
+   </div>
+
+  </div>
+
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+
+<script id = "checkSetting.html" type = "text/ng-template">
+   
+</script>
+
+
+
+
+
+
+
+
+<!--  <ion-side-menu expose-aside-when="(min-width:500px)"> 
+ $scope.toggleLeft = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  
+  $scope.isEnlarged = false;
+  $scope.enlarge = function () {
+    $scope.isEnlarged = !$scope.isEnlarged;
+    var content = document.getElementsByTagName('ion-side-menu-content')[0];
+    var sideWidth = document.getElementsByTagName('ion-side-menu')[0].clientWidth;
+    content.style[ionic.CSS.TRANSFORM] = 'translate3d('+($scope.isEnlarged?0:sideWidth)+'px,0px,0px)';
+    content.style[ionic.CSS.TRANSITION] = 'all .3s, width .'+($scope.isEnlarged?1:5)+'s';
+    content.style.width = ($scope.isEnlarged?window.innerWidth:window.innerWidth-sideWidth)+'px';
+    ($scope.isEnlarged ? $ionicBody.addClass('enlarged') : $ionicBody.removeClass('enlarged'));
+  };
+  http://www.tutorialspoint.com/ionic/ionic_grid.htm
+-->

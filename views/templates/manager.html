@@ -1,0 +1,96 @@
+<ion-view view-title="{{title}} Manager">
+ <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+       <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+           <button class="button button-icon" menu-toggle="right" ng-click="openModal()">
+              New
+            </button>
+  
+
+        <button class="button button-icon" menu-toggle="right" ng-click="auth()" ng-if="!!config.isChedkedAdmin && title=='Permissions'">
+        authorize
+        </button>
+ 
+     
+
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+
+
+        <button class="button button-icon" menu-toggle="right" ng-click="exit()">
+        Exit
+        </button>
+      </ion-nav-buttons>
+
+<ion-subheader-bar class="bar bar-subheader" style="padding:0;margin:0">
+    
+<div style="width:33.3%;text-align:center;font-size:25px;line-height:1.2;border-right:solid #ccc 1px;padding:0;"  ng-class="{'current_select':title=='Permissions'}" ng-click="goToLink('Permissions')">Permissions</div>
+    <div style="width:33.3%;text-align:center;font-size:25px;line-height:1.2;padding:0;border-right:solid #ccc 1px;" ng-class="{'current_select':title=='Chain'}" ng-click="goToLink('Chain')">Chain stores</div>
+        <div style="width:33.3%;text-align:center;font-size:25px;line-height:1.2;padding:0;border-right:solid #ccc 1px;" ng-class="{'current_select':title=='Setting'}" ng-click="goToLink('Setting')">Setting Seq</div>
+
+  </ion-subheader-bar>  <!-- optional -->
+
+  <ion-content style="margin-top:50px;">
+  
+
+  <div class="list" ng-if="title=='Permissions'">
+              <div class="item item-divider" ng-repeat-start="item in returnData.permissionsList">
+
+                             <label class="admin--label" style="margin-top:-10px;margin-left:-6px">
+                            <input class="admin--radio" type="checkbox" id="allCheckbox{{item._id}}" ng-click="all($event)" data-permground="{{item._id}}" >
+                            <span class="admin--checkbox admin--radioInput"></span>{{item._id}}
+                        </label>
+              </div>
+              <div class="flex-container" ng-repeat-end>
+                  
+                  <div  ng-class="{'flex-item':true,'statusDisable':!obj.status,'special':obj.merchantIds.length>0}" ng-repeat="obj in item.perms | orderBy:['subject','perm'] " data-perm="{{obj.value}}"    ng-click="getPerm($event)" title="{{obj.merchantIds}}">
+                   
+                   <label class="admin--label" style="margin-top:-10px;" ng-click="stop($event)">
+                     <input   class="admin--radio" type="checkbox" ng-model="obj.key" 
+                             ng-true-value="'{{obj.value}}'" ng-false-value="'0'" />
+                    <span class="admin--checkbox admin--radioInput"></span>
+                    </label> {{obj.subject}}-{{obj.action}}-[{{obj.perm}}] 
+                   </div>
+             </div>
+   </div>
+  
+
+  <div class="list" ng-if="title=='Chain'">
+           
+   <div class="item item-divider" ng-click="checkSetting()">
+         <div style="display:inline-block;width:33%"> Name </div><div style="display:inline-block;width:67%">Value</div><!-- <div style="display:inline-block;width:33%">InputType</div> -->
+    </div>
+
+   <div class="item" ng-repeat="item in chainStores"  ng-click="openModal($index)">
+    <div style="display:inline-block;width:33%">{{item.name}} </div><div style="display:inline-block;width:67%">{{item.merchantIds}}</div>
+
+    </div>
+   </div>
+
+  <div class="list" ng-if="title=='Setting'">
+           
+   <div class="item item-divider">
+         <div style="display:inline-block;width:33%"> Name </div><div style="display:inline-block;width:67%">Value</div><!-- <div style="display:inline-block;width:33%">InputType</div> -->
+    </div>
+
+   <div class="item" ng-repeat="item in appData.seqs"  ng-click="openSeq($index)">
+    <div style="display:inline-block;">{{item.merchantId}}</div>
+    <div style="display:inline-block;">{{item.name}}</div>
+    <div style="display:inline-block;">{{item.seq}}</div>
+    <div style="display:inline-block;">{{item.seqStart}}{{item.seqEnd}}</div>
+    <div style="display:inline-block;">{{item.daySign}}</div>
+
+    </div>
+   </div>
+
+
+
+
+</ion-content>
+</ion-view>
+ 
